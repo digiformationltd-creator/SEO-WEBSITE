@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RankForge UK | We Put You On Page One. Guaranteed.</title>
     <meta name="description" content="RankForge UK is a results-driven SEO agency based in London, helping UK businesses dominate Google search rankings since 2019.">
     <!-- Google Fonts -->
@@ -12,6 +12,25 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        *, *::before, *::after {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        html, body {
+          overflow-x: hidden;
+          max-width: 100vw;
+          width: 100%;
+        }
+        img, video {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+        * {
+          word-break: break-word;
+        }
+
         /* CSS Custom Properties */
         :root {
             /* Colors - Black & Red Version */
@@ -600,11 +619,217 @@
             .included-list { grid-template-columns: 1fr; }
         }
         
-        @media (max-width: 768px) {
-            .split-section-about { grid-template-columns: 1fr !important; gap: 30px !important; }
-            .glass-card[style*="grid"] { grid-template-columns: 1fr !important; }
-            form > div[style*="grid"] { grid-template-columns: 1fr !important; }
-            #audit .glass-card > div { padding: 30px 20px !important; }
+        /* Hamburger CSS */
+        @media (max-width: 767px) {
+          .desktop-nav { display: none; }
+          .desktop-cta { display: none; }
+          .hamburger { display: flex; }
+        }
+
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
+          padding: 10px;
+          min-width: 44px;
+          min-height: 44px;
+          background: none;
+          border: none;
+        }
+        .hamburger span {
+          width: 24px;
+          height: 2px;
+          background: #F0F4FF;
+          border-radius: 2px;
+          transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 0; left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(10,15,30,0.98);
+          z-index: 9999;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 28px;
+        }
+        .mobile-menu.open {
+          display: flex;
+          animation: menuFadeIn 0.3s ease;
+        }
+        @keyframes menuFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .mobile-menu a {
+          font-size: 26px;
+          color: #F0F4FF;
+          text-decoration: none;
+          font-weight: 600;
+          font-family: 'Space Grotesk',sans-serif;
+          transition: color 0.2s;
+        }
+        .mobile-menu a:active {
+          color: #1E6FFF;
+        }
+        .menu-cta-btn {
+          margin-top: 8px;
+          padding: 14px 32px !important;
+          background: linear-gradient(135deg, #1E6FFF, #00E5FF) !important;
+          border-radius: 8px !important;
+          font-size: 18px !important;
+          color: white !important;
+        }
+        .mobile-menu-close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 28px;
+          cursor: pointer;
+          min-width: 44px;
+          min-height: 44px;
+          color: #F0F4FF;
+          background: none;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* FIX 4 — MOBILE LAYOUT CSS: */
+        @media (max-width: 767px) {
+          h1 { font-size: 36px !important; line-height: 1.2 !important; }
+          h2 { font-size: 28px !important; }
+          h3 { font-size: 22px !important; }
+          h4 { font-size: 18px !important; }
+          p  { font-size: 15px !important; }
+
+          section { padding: 48px 16px !important; }
+          .container { width: 100% !important; padding: 0 16px !important; max-width: 100% !important; }
+
+          .hero { flex-direction: column !important; text-align: center !important; padding: 100px 16px 48px !important; min-height: auto !important; }
+          .hero-left, .hero-right { width: 100% !important; max-width: 100% !important; }
+          .hero-right { margin-top: 40px !important; }
+          .hero-dashboard-card { width: 100% !important; max-width: 340px !important; margin: 0 auto !important; }
+
+          .floating-badge { display: none !important; }
+
+          .trust-strip { flex-wrap: wrap !important; gap: 12px !important; justify-content: center !important; }
+          .trust-item { width: 45% !important; text-align: center !important; }
+
+          .btn-group { flex-direction: column !important; width: 100% !important; align-items: center !important; }
+          .btn { width: 100% !important; max-width: 360px !important; min-height: 52px !important; font-size: 16px !important; text-align: center !important; }
+
+          .stats-row { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+
+          .services-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+          .steps-container { flex-direction: column !important; gap: 24px !important; }
+          .step-connector { display: none !important; }
+
+          .case-studies-grid { grid-template-columns: 1fr !important; }
+          .testimonials-grid { grid-template-columns: 1fr !important; }
+
+          .pricing-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+          .pricing-card.popular { transform: none !important; }
+
+          .blog-grid { grid-template-columns: 1fr !important; }
+
+          .team-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+          .tools-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+
+          .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; text-align: center !important; }
+          .footer-social { justify-content: center !important; }
+
+          .form-group { width: 100% !important; }
+          input, textarea, select { width: 100% !important; font-size: 16px !important; padding: 14px 16px !important; }
+          .form-row { flex-direction: column !important; }
+          .submit-btn { width: 100% !important; min-height: 54px !important; font-size: 17px !important; }
+
+          .contact-grid { flex-direction: column !important; gap: 32px !important; }
+
+          #particles-canvas, .particles-js { display: none !important; }
+          .tilt-card { transform: none !important; }
+
+          main, body { padding-bottom: 80px !important; }
+
+          .announcement-bar { font-size: 12px !important; padding: 8px 16px !important; }
+          header { height: 60px !important; padding: 0 16px !important; }
+          .logo { height: 28px !important; }
+
+          .service-hero { flex-direction: column !important; text-align: center !important; }
+          .service-detail-grid { grid-template-columns: 1fr !important; }
+
+          .faq-item { padding: 16px !important; }
+          .faq-question { font-size: 16px !important; }
+
+          .card:hover, .service-card:hover, .blog-card:hover { transform: none !important; box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important; }
+
+          .split-section-about { grid-template-columns: 1fr !important; gap: 30px !important; }
+          .glass-card[style*="grid"] { grid-template-columns: 1fr !important; }
+          form > div[style*="grid"] { grid-template-columns: 1fr !important; }
+          #audit .glass-card > div { padding: 30px 20px !important; }
+
+          .glass-card { backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; }
+          .animate-float { animation: none !important; }
+          .gradient-mesh { display: none !important; }
+          .reveal { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+          .reveal.visible { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FIX 5 — TABLET LAYOUT: */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          h1 { font-size: 50px !important; }
+          h2 { font-size: 38px !important; }
+          h3 { font-size: 28px !important; }
+
+          section { padding: 64px 32px !important; }
+
+          .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .pricing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .hero { gap: 32px !important; }
+        }
+
+        /* FIX 6 — BOTTOM NAV BAR (Mobile): */
+        .bottom-nav { display: none; }
+        @media (max-width: 767px) {
+          .bottom-nav {
+            display: flex; position: fixed; bottom: 0; left: 0; width: 100%; height: 64px;
+            background: rgba(10,15,30,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0,229,255,0.15); justify-content: space-around; align-items: center;
+            z-index: 1000; padding: 0 4px;
+          }
+          .bn-item {
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
+            color: #8892A4; text-decoration: none; font-size: 10px; font-family: 'Inter', sans-serif;
+            min-width: 44px; min-height: 44px; justify-content: center; transition: color 0.2s; padding: 4px;
+          }
+          .bn-item.active, .bn-item:active { color: #1E6FFF; }
+          .bn-cta { color: #00E5FF !important; }
+          .bn-item i { width: 20px; height: 20px; stroke-width: 1.8; }
         }
     </style>
 </head>
@@ -663,9 +888,23 @@
 
         <a href="#audit" class="btn btn-primary desktop-cta">Get Free Audit</a>
         
-        <button class="mobile-menu-btn" id="mobile-menu-btn">
-            <i data-lucide="menu"></i>
+        <button id="hamburger" class="hamburger" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
+
+        <div id="mobileMenu" class="mobile-menu">
+          <button id="menuClose" class="mobile-menu-close">✕</button>
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#case-studies">Case Studies</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+          <a href="#audit" class="menu-cta-btn">Get Free SEO Audit</a>
+        </div>
     </header>
 
     <main id="app-root">
@@ -2736,6 +2975,54 @@
             tlObserver.observe(timeline);
         }
 
+        // Hamburger Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeBtn = document.getElementById('menuClose');
+
+        if(hamburger && mobileMenu && closeBtn) {
+            hamburger.addEventListener('click', () => {
+              mobileMenu.classList.add('open');
+              hamburger.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            });
+
+            closeBtn.addEventListener('click', () => {
+              mobileMenu.classList.remove('open');
+              hamburger.classList.remove('active');
+              document.body.style.overflow = '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+              });
+            });
+        }
     </script>
+    <nav id="bottomNav" class="bottom-nav">
+      <a href="#home" class="bn-item active">
+        <i data-lucide="home"></i>
+        <span>Home</span>
+      </a>
+      <a href="#services" class="bn-item">
+        <i data-lucide="grid"></i>
+        <span>Services</span>
+      </a>
+      <a href="#audit" class="bn-item bn-cta">
+        <i data-lucide="bar-chart"></i>
+        <span>Free Audit</span>
+      </a>
+      <a href="#about" class="bn-item">
+        <i data-lucide="info"></i>
+        <span>About</span>
+      </a>
+      <a href="#contact" class="bn-item">
+        <i data-lucide="mail"></i>
+        <span>Contact</span>
+      </a>
+    </nav>
 </body>
 </html>
