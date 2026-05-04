@@ -599,6 +599,13 @@
             .service-detail-grid { grid-template-columns: 1fr; }
             .included-list { grid-template-columns: 1fr; }
         }
+        
+        @media (max-width: 768px) {
+            .split-section-about { grid-template-columns: 1fr !important; gap: 30px !important; }
+            .glass-card[style*="grid"] { grid-template-columns: 1fr !important; }
+            form > div[style*="grid"] { grid-template-columns: 1fr !important; }
+            #audit .glass-card > div { padding: 30px 20px !important; }
+        }
     </style>
 </head>
 <body>
